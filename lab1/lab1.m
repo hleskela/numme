@@ -37,5 +37,22 @@ mean(met2) % These met2 things have no meaning, remove
 mean(time2)
 
 %% Assignment 3
-f = x -4*sin(2*x) -3
-plot(f, [-5 5])
+clear;
+x = -2*pi:pi/100:3*pi;
+plot(x, f(x), x, 0);
+% Based on above plot, approximate start guesses are: 
+% -1, -0.5, 2, 3, 4.5 for all roots
+% -1 and 4.5 smallest and biggest root
+guess = 4.5;
+previous_guess = 0;
+iterations = 0;
+while abs(guess - previous_guess) > 10^-10
+    iterations = iterations +1;
+    previous_guess = guess;
+    guess = guess - (f(guess)/df(guess));
+end
+disp('Done with Newton-Raphsons method')
+guess
+iterations
+% root = -0.8984 in 3 iterations
+% root = 4.5178 in 2 iterations
