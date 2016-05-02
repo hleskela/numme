@@ -76,3 +76,25 @@ while abs(xx - yy) > 10^-10
 end
 yy
 iterations
+
+%% Assignment 5
+clear
+% Newtons method, but use better start guesses. analytically instead of
+% guess from image
+iter = 0;
+dxnorm = 1;
+x = [93 16]'; % based on image
+while dxnorm>0.5e-4 & iter < 10
+    f = [(93 - x(1))^2 + (6 - x(2))^2 - 55.1^2
+         (63 - x(1))^2 + (16 - x(2))^2 - 46.2^2];
+
+    J = [2*x(1) - 186 2*x(2) - 12
+         2*x(1) - 126 2*x(2) - 32];
+
+    dx = -J\f;
+    x = x + dx;
+    dxnorm = norm(dx, inf);
+    iter = iter+1;
+end
+x
+iter
