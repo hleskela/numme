@@ -77,19 +77,19 @@ end
 yy
 iterations
 
-%% Assignment 5
+%% Assignment 4
 clear
 % Newtons method, but use better start guesses. analytically instead of
 % guess from image
 iter = 0;
 dxnorm = 1;
-x = [93 16]'; % based on image
+x = [100 100]'; % based on image
 while dxnorm>0.5e-4 & iter < 10
-    f = [(93 - x(1))^2 + (6 - x(2))^2 - 55.1^2
-         (63 - x(1))^2 + (16 - x(2))^2 - 46.2^2];
+    f = [(93 - x(1))^2 + (63 - x(2))^2 - (55.1)^2
+         (6 - x(1))^2 + (16 - x(2))^2 - (46.2)^2];
 
-    J = [2*x(1) - 186 2*x(2) - 12
-         2*x(1) - 126 2*x(2) - 32];
+    J = [2*x(1) - 186 2*x(2) - 126
+         2*x(1) - 12 2*x(2) - 32];
 
     dx = -J\f;
     x = x + dx;
@@ -98,3 +98,7 @@ while dxnorm>0.5e-4 & iter < 10
 end
 x
 iter
+
+%% Assignment 5
+w = 2*pi/T
+daylight = c1 + c2*cos(w*t) +c3*sin(w*t)
